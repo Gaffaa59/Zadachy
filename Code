@@ -1,0 +1,225 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Zadachy zadachy = new Zadachy();
+        while(true) {
+            System.out.println(" ");
+            System.out.println("1 - Агрегатное состояние воды");
+            System.out.println("2 - Тинейджер или нет?");
+            System.out.println("3 - Одинаковые ли цифры на конце?");
+            System.out.println("4 - Максимальное число из 3-х");
+            System.out.println("5 - Суета со строкой");
+            System.out.println("6 - Повторяющиеся символы в строке");
+            System.out.println("7 - Проверка на дату");
+            System.out.println("8 - Медиана");
+            System.out.println("9 - Совмещение массивов");
+            System.out.println("10 - Обмен элементами в массиве");
+
+            System.out.print(" - ");
+            zadachy.select();
+        }
+    }
+
+}
+class Zadachy {
+    Scanner scanner = new Scanner(System.in);
+
+    void select(){
+        int nomer = scanner.nextInt();
+        switch (nomer){
+            case 1:
+                zadacha_one();
+            case 2:
+                zadacha_two();
+            case 3:
+                zadacha_three();
+            case 4:
+                zadacha_four();
+            case 5:
+                zadacha_five();
+            case 6:
+                zadacha_six();
+            case 7:
+                zadacha_seven();
+            case 8:
+                zadacha_eight();
+            case 9:
+                zadacha_nine();
+            case 10:
+                zadacha_ten();
+        }
+
+    }
+    void zadacha_one(){
+        System.out.print("Введите температуру воды - ");
+        int temp = scanner.nextInt();
+        if(temp > 100){
+            System.out.println("Пар (Банька парилка)");
+        } else
+            if(temp < 0){
+                System.out.println("Лёд (по 3 в бокал)");
+            }
+            else{
+                System.out.println("Жидкость (на попей)");
+            }
+    }
+
+    void zadacha_two(){
+        System.out.print("Введите возраст - ");
+        int vozrast = scanner.nextInt();
+        if((vozrast <= 17)&&(vozrast >= 13)){
+            System.out.println(true);
+        }else{
+            System.out.println(false);
+        }
+    }
+
+    void zadacha_three(){
+        System.out.print("Введите два числа - ");
+        int a = scanner.nextInt() % 10;
+        int b = scanner.nextInt() % 10;
+        if(a == b){
+            System.out.println(true);
+        }else{
+            System.out.println(false);
+        }
+    }
+
+    void zadacha_four() {
+        System.out.print("Введите три числа - ");
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        int max = a;
+        if (b > max) {
+            max = b;
+        }
+        if (c > max) {
+            max = c;
+        }
+        System.out.println("Max - "+max);
+    }
+
+    void zadacha_five() {
+        System.out.print("Введите строку - ");
+        String a = scanner.nextLine();
+        char CharAt = a.charAt(a.length()-1);
+        String output = Character.toString(CharAt);
+        output += a;
+        output += CharAt;
+        System.out.println("Результат - ");
+        System.out.print(output);
+    }
+
+    void zadacha_six() {
+        System.out.print("Введите строку - ");
+        String a = scanner.nextLine();
+        char CharAt;
+        char sec;
+        for(int i = 1; i <= a.length()-1; ++i) {
+            CharAt = a.charAt(i);
+            sec = CharAt;
+            CharAt = a.charAt(i-1);
+            if(sec == CharAt){
+                System.out.println(true);
+                return;
+            }
+        }
+        System.out.println(false);
+    }
+
+    void zadacha_seven() {
+        System.out.print("Введите строку - ");
+        String a = scanner.nextLine();
+        String prove = "^\\d\\d(:)\\d\\d(:)\\d\\d$";
+        boolean res = a.matches(prove);
+        System.out.println(res);
+    }
+
+    void zadacha_eight() {
+        System.out.print("Введите размер массива - ");
+        int N = scanner.nextInt();
+        int arr[] = new int[N];
+        System.out.println(" ");
+        for(int i = 0; i < N; i++){
+            System.out.print("[" + i + "] - ");
+            arr[i] = scanner.nextInt();
+        }
+        for(int i = 0; i < N; i++){
+            int min = arr[i];
+            int min_i = i;
+            for(int j = i + 1; j < N; j++)
+            {
+                if(arr[j] < min){
+                    min = arr[j];
+                    min_i = j;
+                }
+            }
+            if (i != min_i) {
+                int tmp = arr[i];
+                arr[i] = arr[min_i];
+                arr[min_i] = tmp;
+            }
+        }
+        System.out.print("массив -");
+        for(int i = 0; i < N; i++){
+            System.out.print(" " + arr[i]);
+        }
+        System.out.println(" ");
+        if(N % 2 == 0){
+            System.out.println("Медиана - " + (arr[N/2-1] + arr[N/2])/2);
+        }else
+        {
+            System.out.println("Медиана - " + arr[N/2]);
+        }
+    }
+    void zadacha_nine() {
+        System.out.print("Введите размер 1-го массива - ");
+        int N = scanner.nextInt();
+        int arr[] = new int[N];
+        for(int i = 0; i < N; i++){
+            System.out.print("[" + i + "] - ");
+            arr[i] = scanner.nextInt();
+        }
+        System.out.println(" ");
+        System.out.print("Введите размер 2-го массива - ");
+        int B = scanner.nextInt();
+        int arrr[] = new int[N+B];
+        for(int i = N; i < N + B; i++){
+            System.out.print("[" + i + "] - ");
+            arrr[i] = scanner.nextInt();
+        }
+        int arr_res[] = new int[N+B];
+
+        for(int i = 0; i < N; i++){
+            arr_res[i] = arr[i];
+        }
+        for(int i = N; i < N + B; i++){
+            arr_res[i] = arrr[i];
+        }
+        System.out.print("массив -");
+        for(int i = 0; i < N + B; i++){
+            System.out.print(" " + arr_res[i]);
+        }
+    }
+
+    void zadacha_ten() {
+        System.out.print("Введите размер массива - ");
+        int N = scanner.nextInt();
+        int arr[] = new int[N];
+        for(int i = 0; i < N; i++){
+            System.out.print("[" + i + "] - ");
+            arr[i] = scanner.nextInt();
+        }
+        int temp = arr[0];
+        arr[0] = arr[arr.length-1];
+        arr[arr.length-1] = temp;
+        System.out.print("массив -");
+        for(int i = 0; i < N; i++){
+            System.out.print(" " + arr[i]);
+        }
+    }
+}
