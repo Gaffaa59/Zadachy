@@ -17,6 +17,7 @@ public class Main {
             System.out.println("8 - Медиана");
             System.out.println("9 - Совмещение массивов");
             System.out.println("10 - Обмен элементами в массиве");
+            System.out.println("11 - Сумма квадратов в массиве");
 
             System.out.print(" - ");
             zadachy.select();
@@ -50,6 +51,8 @@ class Zadachy {
                 zadacha_nine();
             case 10:
                 zadacha_ten();
+            case 11:
+                zadacha_eleven();
         }
 
     }
@@ -220,6 +223,29 @@ class Zadachy {
         System.out.print("массив -");
         for(int i = 0; i < N; i++){
             System.out.print(" " + arr[i]);
+        }
+    }
+
+    void zadacha_eleven() {
+        System.out.print("Введите размер массива - ");
+        int N = scanner.nextInt();
+        int arr[] = new int[N];
+        int res = 0;
+        for(int i = 0; i < N; i++){
+            System.out.print("[" + i + "] - ");
+            arr[i] = scanner.nextInt();
+            res += arr[i] * arr[i];
+        }
+        System.out.print("массив -");
+        for(int i = 0; i < N; i++){
+            System.out.print(" " + arr[i]);
+        }
+        System.out.println(" ");
+        System.out.println("Сумма - " + res);
+        if(res % 2 == 0){
+            System.out.println("Сумма квадратов четна");
+        }else{
+            System.out.println("Сумма квадратов нечетна");
         }
     }
 }
