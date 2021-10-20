@@ -25,6 +25,7 @@ public class Main {
                 System.out.println("11 - Сумма квадратов в массиве");
                 System.out.println("12 - Разница наименьшего и наибольшего в массиве");
                 System.out.println("13 - 21 (BlackJack)");
+                System.out.println("15 - Равный шаг между элементами");
 
                 System.out.print(" - ");
                 zadachy.select();
@@ -67,6 +68,8 @@ class Zadachy {
                 zadacha_12();
             case 13:
                 blackjack();
+            case 15:
+                zadacha_15();
         }
 
     }
@@ -379,5 +382,31 @@ class Zadachy {
                 }
             }
         }
+    }
+
+    void zadacha_15() {
+        System.out.print("Введите размер массива - ");
+        int N = scanner.nextInt();
+        int arr[] = new int[N];
+        int res = 0;
+        for(int i = 0; i < N; i++){
+            System.out.print("[" + i + "] - ");
+            arr[i] = scanner.nextInt();
+            res += arr[i] * arr[i];
+        }
+        System.out.print("массив -");
+        for(int i = 0; i < N; i++){
+            System.out.print(" " + arr[i]);
+        }
+        System.out.println(" ");
+        int shag = arr[1] - arr[0];
+        for(int i = 2; i < N; i++){
+            if(arr[i] - arr[i-1] != shag){
+                System.out.println(false);
+                return;
+            }
+        }
+        System.out.println(true);
+        return;
     }
 }
