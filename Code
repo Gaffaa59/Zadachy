@@ -1,26 +1,36 @@
 package com.company;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
+import java.lang.Thread;
+import java.io.*;
 
 public class Main {
 
     public static void main(String[] args) {
         Zadachy zadachy = new Zadachy();
         while(true) {
-            System.out.println(" ");
-            System.out.println("1 - Агрегатное состояние воды");
-            System.out.println("2 - Тинейджер или нет?");
-            System.out.println("3 - Одинаковые ли цифры на конце?");
-            System.out.println("4 - Максимальное число из 3-х");
-            System.out.println("5 - Суета со строкой");
-            System.out.println("6 - Повторяющиеся символы в строке");
-            System.out.println("7 - Проверка на дату");
-            System.out.println("8 - Медиана");
-            System.out.println("9 - Совмещение массивов");
-            System.out.println("10 - Обмен элементами в массиве");
-            System.out.println("11 - Сумма квадратов в массиве");
+            try {
+                Thread.sleep(3500);
+                System.out.println(" ");
+                System.out.println("1 - Агрегатное состояние воды");
+                System.out.println("2 - Тинейджер или нет?");
+                System.out.println("3 - Одинаковые ли цифры на конце?");
+                System.out.println("4 - Максимальное число из 3-х");
+                System.out.println("5 - Суета со строкой");
+                System.out.println("6 - Повторяющиеся символы в строке");
+                System.out.println("7 - Проверка на дату");
+                System.out.println("8 - Медиана");
+                System.out.println("9 - Совмещение массивов");
+                System.out.println("10 - Обмен элементами в массиве");
+                System.out.println("11 - Сумма квадратов в массиве");
+                System.out.println("12 - Разница наименьшего и наибольшего в массиве");
+                System.out.println("13 - 21 (BlackJack)");
 
-            System.out.print(" - ");
-            zadachy.select();
+                System.out.print(" - ");
+                zadachy.select();
+            } catch (InterruptedException e) {
+
+            }
         }
     }
 
@@ -32,31 +42,35 @@ class Zadachy {
         int nomer = scanner.nextInt();
         switch (nomer){
             case 1:
-                zadacha_one();
+                zadacha_1();
             case 2:
-                zadacha_two();
+                zadacha_2();
             case 3:
-                zadacha_three();
+                zadacha_3();
             case 4:
-                zadacha_four();
+                zadacha_4();
             case 5:
-                zadacha_five();
+                zadacha_5();
             case 6:
-                zadacha_six();
+                zadacha_6();
             case 7:
-                zadacha_seven();
+                zadacha_7();
             case 8:
-                zadacha_eight();
+                zadacha_8();
             case 9:
-                zadacha_nine();
+                zadacha_9();
             case 10:
-                zadacha_ten();
+                zadacha_10();
             case 11:
-                zadacha_eleven();
+                zadacha_11();
+            case 12:
+                zadacha_12();
+            case 13:
+                blackjack();
         }
 
     }
-    void zadacha_one(){
+    void zadacha_1(){
         System.out.print("Введите температуру воды - ");
         int temp = scanner.nextInt();
         if(temp > 100){
@@ -70,7 +84,7 @@ class Zadachy {
             }
     }
 
-    void zadacha_two(){
+    void zadacha_2(){
         System.out.print("Введите возраст - ");
         int vozrast = scanner.nextInt();
         if((vozrast <= 17)&&(vozrast >= 13)){
@@ -80,7 +94,7 @@ class Zadachy {
         }
     }
 
-    void zadacha_three(){
+    void zadacha_3(){
         System.out.print("Введите два числа - ");
         int a = scanner.nextInt() % 10;
         int b = scanner.nextInt() % 10;
@@ -91,7 +105,7 @@ class Zadachy {
         }
     }
 
-    void zadacha_four() {
+    void zadacha_4() {
         System.out.print("Введите три числа - ");
         int a = scanner.nextInt();
         int b = scanner.nextInt();
@@ -106,7 +120,7 @@ class Zadachy {
         System.out.println("Max - "+max);
     }
 
-    void zadacha_five() {
+    void zadacha_5() {
         System.out.print("Введите строку - ");
         String a = scanner.nextLine();
         char CharAt = a.charAt(a.length()-1);
@@ -117,7 +131,7 @@ class Zadachy {
         System.out.print(output);
     }
 
-    void zadacha_six() {
+    void zadacha_6() {
         System.out.print("Введите строку - ");
         String a = scanner.nextLine();
         char CharAt;
@@ -134,7 +148,7 @@ class Zadachy {
         System.out.println(false);
     }
 
-    void zadacha_seven() {
+    void zadacha_7() {
         System.out.print("Введите строку - ");
         String a = scanner.nextLine();
         String prove = "^\\d\\d(:)\\d\\d(:)\\d\\d$";
@@ -142,7 +156,7 @@ class Zadachy {
         System.out.println(res);
     }
 
-    void zadacha_eight() {
+    void zadacha_8() {
         System.out.print("Введите размер массива - ");
         int N = scanner.nextInt();
         int arr[] = new int[N];
@@ -179,7 +193,7 @@ class Zadachy {
             System.out.println("Медиана - " + arr[N/2]);
         }
     }
-    void zadacha_nine() {
+    void zadacha_9() {
         System.out.print("Введите размер 1-го массива - ");
         int N = scanner.nextInt();
         int arr[] = new int[N];
@@ -209,7 +223,7 @@ class Zadachy {
         }
     }
 
-    void zadacha_ten() {
+    void zadacha_10() {
         System.out.print("Введите размер массива - ");
         int N = scanner.nextInt();
         int arr[] = new int[N];
@@ -226,7 +240,7 @@ class Zadachy {
         }
     }
 
-    void zadacha_eleven() {
+    void zadacha_11() {
         System.out.print("Введите размер массива - ");
         int N = scanner.nextInt();
         int arr[] = new int[N];
@@ -246,6 +260,124 @@ class Zadachy {
             System.out.println("Сумма квадратов четна");
         }else{
             System.out.println("Сумма квадратов нечетна");
+        }
+    }
+    void zadacha_12() {
+        System.out.print("Введите размер массива - ");
+        int N = scanner.nextInt();
+        int arr[] = new int[N];
+        int res = 0;
+        for(int i = 0; i < N; i++){
+            System.out.print("[" + i + "] - ");
+            arr[i] = scanner.nextInt();
+            res += arr[i] * arr[i];
+        }
+        System.out.print("массив -");
+        for(int i = 0; i < N; i++){
+            System.out.print(" " + arr[i]);
+        }
+        int min = arr[0], max = arr[0];
+        for(int i = 0; i < N; i++){
+            if(arr[i] < min){
+                min = arr[i];
+            }else if(arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        System.out.println(" ");
+        System.out.println("max - " + max + " min - " + min);
+        System.out.println("max - min = " + (max - min));
+    }
+
+    void blackjack(){
+        int player_cards = 0;
+        int dealer_cards = 0;
+        int hit_card;
+        int hit_or_not_dealer;
+        int hit_or_not_player;
+
+
+        hit_card = ThreadLocalRandom.current().nextInt(2, 11 + 1);
+        player_cards += hit_card;
+        System.out.println("Дилер выдал карту " + hit_card);
+        hit_card = ThreadLocalRandom.current().nextInt(2, 11 + 1);
+        player_cards += hit_card;
+        System.out.println("Дилер выдал карту " + hit_card);
+        if(player_cards == 21){
+            System.out.println("Black Jack вы победили!!!");
+            return;
+        }
+        System.out.println(" ");
+        hit_card = ThreadLocalRandom.current().nextInt(2, 11 + 1);
+        dealer_cards += hit_card;
+        System.out.println("Дилер взял карту " + hit_card);
+        hit_card = ThreadLocalRandom.current().nextInt(2, 11 + 1);
+        dealer_cards += hit_card;
+        System.out.println("Дилер взял карту ");
+        if(dealer_cards == 21){
+            System.out.println("Black Jack у дилера вы проиграли.");
+            return;
+        }
+
+        while(true){
+            System.out.println(" ");
+            System.out.println("Сумма ваших карт - " + player_cards + ". Берём еще? 1-да 0-нет");
+            hit_or_not_player = scanner.nextInt();
+            if(hit_or_not_player != 1){
+
+            }else{
+                hit_card = ThreadLocalRandom.current().nextInt(2, 11 + 1);
+                player_cards += hit_card;
+                System.out.println("Дилер выдал карту " + hit_card);
+                if(player_cards == 21){
+                    System.out.println("Black Jack вы победили!!!");
+                    return;
+                }else if(player_cards > 21){
+                    System.out.println("Сумма ваших карт - " + player_cards + ". Вы проиграли. ");
+                    return;
+                }
+            }
+
+            if(dealer_cards >= 16){
+                hit_or_not_dealer = ThreadLocalRandom.current().nextInt(1, 2 + 1);
+                if(hit_or_not_dealer == 1){
+                    hit_card = ThreadLocalRandom.current().nextInt(2, 11 + 1);
+                    dealer_cards += hit_card;
+                    System.out.println("Дилер взял карту");
+                    if(dealer_cards == 21){
+                        System.out.println("Black Jack у дилера вы проиграли.");
+                        return;
+                    }else if(dealer_cards > 21){
+                        System.out.println("Сума карт дилера " + dealer_cards + ". Вы выиграли!!!");
+                        return;
+                    }
+                }else{
+                    System.out.println("Дилер не взял карту");
+                    if(hit_or_not_player != 1){
+                        if(player_cards == dealer_cards){
+                            System.out.println("Ничья!");
+                            return;
+                        }else if(player_cards < dealer_cards){
+                            System.out.println("Сума карт дилера больше - " + dealer_cards + ". Вы проиграли.");
+                            return;
+                        }else{
+                            System.out.println("Сума карт дилера меньше - " + dealer_cards + ". Вы выиграли!!!");
+                            return;
+                        }
+                    }
+                }
+            }else{
+                hit_card = ThreadLocalRandom.current().nextInt(2, 11 + 1);
+                dealer_cards += hit_card;
+                System.out.println("Дилер взял карту");
+                if(dealer_cards == 21){
+                    System.out.println("Black Jack у дилера вы проиграли.");
+                    return;
+                }else if(dealer_cards > 21){
+                    System.out.println("Сума карт дилера " + dealer_cards + ". Вы выиграли!!!");
+                    return;
+                }
+            }
         }
     }
 }
