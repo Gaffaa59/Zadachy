@@ -26,6 +26,7 @@ public class Main {
                 System.out.println("12 - Разница наименьшего и наибольшего в массиве");
                 System.out.println("13 - 21 (BlackJack)");
                 System.out.println("15 - Равный шаг между элементами");
+                System.out.println("16 - AddInArray");
 
                 System.out.print(" - ");
                 zadachy.select();
@@ -70,6 +71,8 @@ class Zadachy {
                 blackjack();
             case 15:
                 zadacha_15();
+            case 16:
+                zadacha_16();
         }
 
     }
@@ -408,5 +411,48 @@ class Zadachy {
         }
         System.out.println(true);
         return;
+    }
+
+    void zadacha_16() {
+        System.out.print("Введите размер массива - ");
+        int N = scanner.nextInt();
+        int arr[] = new int[N];
+        for (int i = 0; i < N; i++) {
+            System.out.print("[" + i + "] - ");
+            arr[i] = scanner.nextInt();
+        }
+        System.out.print("массив -");
+        for(int i = 0; i < N; i++){
+            System.out.print(" " + arr[i]);
+        }
+        System.out.println(" ");
+        int a;
+        while(true) {
+            System.out.println("Добавить элемент к массиву? 1-да 0-нет");
+            a = scanner.nextInt();
+            int[] arr2;
+            if(a == 1)
+            {
+                System.out.print("Введите число - ");
+                a = scanner.nextInt();
+                arr = addInArray(arr, a);
+                System.out.print("массив -");
+                for(int i = 0; i < arr.length; i++){
+                    System.out.print(" " + arr[i]);
+                }
+                System.out.println(" ");
+            }else{
+                return;
+            }
+
+        }
+    }
+    int[] addInArray(int[] arr, int a){
+        int[] arr2 = new int[arr.length + 1];
+        for (int i = 0; i < arr.length; i++) {
+            arr2[i] = arr[i];
+        }
+        arr2[arr2.length-1] = a;
+        return(arr2);
     }
 }
